@@ -12,7 +12,10 @@
     <header>
     <ion-icon name="fast-food-outline" class="left"></ion-icon>
     <h1 class="center">FAST FOOD</h1>
-    <ion-icon name="cart-outline" class="right"></ion-icon>
+    <ion-icon name="cart-outline" class="right">
+    <span id="cart-count">0</span>
+</ion-icon>
+
     </header>
     <main>
     <div class="container">
@@ -116,6 +119,13 @@
         </div>
     </div>
     </div>
+    <div id="cart-panel" class="cart-panel">
+    <h2>Your Cart</h2>
+    <div id="cart-items"></div>
+    <h3>Total: Rs. <span id="cart-total">0</span></h3>
+    <button id="place-order">Place Order</button>
+</div>
+<script src="./shop.js"></script>
     </main>
 </body>
 </html>
