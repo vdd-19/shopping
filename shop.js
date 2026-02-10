@@ -1,22 +1,17 @@
-// ================================
-// SELECT ELEMENTS
-// ================================
-const productCartIcons = document.querySelectorAll('.box ion-icon'); // cart icon in product box
-const headerCart = document.querySelector('.right'); // cart icon in header
-const cartCountSpan = document.getElementById('cart-count'); // badge showing item count
-const cartPanel = document.getElementById('cart-panel'); // right-side cart panel
-const cartItemsDiv = document.getElementById('cart-items'); // div to list cart items
-const cartTotalSpan = document.getElementById('cart-total'); // total price span
-const placeOrderBtn = document.getElementById('place-order'); // place order button
+
+const productCartIcons = document.querySelectorAll('.box ion-icon'); 
+const headerCart = document.querySelector('.right'); 
+const cartCountSpan = document.getElementById('cart-count'); 
+const cartPanel = document.getElementById('cart-panel'); 
+const cartItemsDiv = document.getElementById('cart-items'); 
+const cartTotalSpan = document.getElementById('cart-total');
+const placeOrderBtn = document.getElementById('place-order');
 
 let cart = []; // array to store cart items
 
-// ================================
-// ADD ITEM TO CART
-// ================================
 productCartIcons.forEach(icon => {
     icon.addEventListener('click', (e) => {
-        e.stopPropagation(); // prevent triggering header cart toggle
+        e.stopPropagation();
 
         const box = icon.parentElement;
         const name = box.querySelector('.name').textContent;
@@ -34,15 +29,12 @@ productCartIcons.forEach(icon => {
     });
 });
 
-// ================================
-// UPDATE CART UI
-// ================================
 function updateCart() {
-    // total items in cart
+    
     const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
     cartCountSpan.textContent = totalItems;
 
-    // update cart items in panel
+  
     cartItemsDiv.innerHTML = '';
     let totalPrice = 0;
 
@@ -61,16 +53,10 @@ function updateCart() {
     cartTotalSpan.textContent = totalPrice;
 }
 
-// ================================
-// TOGGLE CART PANEL
-// ================================
 headerCart.addEventListener('click', () => {
     cartPanel.classList.toggle('show');
 });
 
-// ================================
-// PLACE ORDER
-// ================================
 placeOrderBtn.addEventListener('click', () => {
     if (cart.length === 0) {
         alert('Cart is empty!');
@@ -85,8 +71,8 @@ placeOrderBtn.addEventListener('click', () => {
 
     alert(message);
 
-    // clear cart after order
     cart = [];
     updateCart();
     cartPanel.classList.remove('show');
 });
+
